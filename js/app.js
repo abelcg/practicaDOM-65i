@@ -32,16 +32,42 @@ const verMas = () => {
 
     parrafo.className = 'lead' */
 
-    //3- Insertar el elemento html en el DOM 
-    contenedorPadre.appendChild(parrafo);
+    //3- Insertar el elemento html en el DOM
+    //contenedorPadre.appendChild(parrafo);
 
     //Opcion 2 - camino corto
-    
 
+    contenedorPadre.innerHTML += `<p class="lead">
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic dolore
+    ipsum ad, excepturi, autem id animi cupiditate nesciunt fugit
+    veritatis magni vero ex nihil distinctio accusantium. Similique
+    aliquam praesentium dolorem deserunt facilis ipsum assumenda quas
+    numquam repellendus in. Minima molestiae magni est sint nihil placeat!
+    Dolor animi velit quam sit.
+  </p>`;
 
-
-
+    //modificar el texto del botón
+    btnVerMas.innerHTML = 'Ocultar';
+    btnVerMas.className = 'btn btn-danger';
   } else {
-    
+    console.log('aqui vamos a borrar el elemento');
+    console.log(contenedorPadre.hasChildNodes()); //devuelve un true or false
+    console.log(contenedorPadre.children.length); //children: retorna un array de nodos hijos
+
+    if (
+      contenedorPadre.hasChildNodes() &&
+      contenedorPadre.children.length >= 2
+    ) {
+      //borrar el parrafo
+      contenedorPadre.removeChild(contenedorPadre.children[1]);
+
+      //modificar el texto y la estetica del botón
+      btnVerMas.innerHTML = 'Ver más';
+      btnVerMas.className = 'btn btn-primary';
+    }
   }
 };
+
+
+//la propiedad para acceder al texto o al contenido de un input es value
+// nombreInput.value
